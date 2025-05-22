@@ -9,9 +9,11 @@ import {
   patchContactController,
 } from '../controllers/contacts.js';
 
-import { validateNewContact } from '../middlewares/validateContact.js';
+import { isValidId } from '../middlewares/isValidId.js';
+import { validateBody } from '../middlewares/validateBody.js';
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+import { contactShema, updateContactShema } from '../validation/contacts.js';
 
 const contactsRouter = Router();
 
@@ -19,21 +21,31 @@ const jsonParser = express.json();
 
 contactsRouter.get('/', ctrlWrapper(getContactsController));
 
-contactsRouter.get('/:contactId', ctrlWrapper(getContactByIdController));
+contactsRouter.get(
+  '/:contactId',
+  isValidId,
+  ctrlWrapper(getContactByIdController),
+);
 
 contactsRouter.post(
   '/',
   jsonParser,
-  validateNewContact,
+  validateBody(contactShema),
   ctrlWrapper(createContactController),
 );
 
 contactsRouter.patch(
   '/:contactId',
+  isValidId,
   jsonParser,
+  validateBody(updateContactShema),
   ctrlWrapper(patchContactController),
 );
 
-contactsRouter.delete('/:contactId', ctrlWrapper(deleteContactController));
+contactsRouter.delete(
+  '/:contactId',
+  isValidId,
+  ctrlWrapper(deleteContactController),
+);
 
 export default contactsRouter;
