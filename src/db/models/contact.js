@@ -21,11 +21,10 @@ const contactsSchema = new Schema(
       required: false,
       default: false,
     },
-    contactType: {
-      type: String,
-      enum: ['work', 'home', 'personal'],
+
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true,
-      default: 'personal',
     },
   },
   {
