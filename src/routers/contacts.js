@@ -48,4 +48,6 @@ contactsRouter.delete(
   ctrlWrapper(deleteContactController),
 );
 
+contactsRouter.get('/', ctrlWrapper(getContactsController));
+
 export default contactsRouter;
