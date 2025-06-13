@@ -11,7 +11,12 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.1:3000"
+      "url": "https://nodejs-hw-mongodb-7-zvjv.onrender.com",
+      "description": "Production server"
+    },
+    {
+      "url": "http://127.0.0.1:3000",
+      "description": "Local development server"
     }
   ],
   "tags": [
@@ -509,16 +514,6 @@
                     "description": "Upload contact's photo",
                     "type": "string",
                     "format": "binary"
-                  },
-                  "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "example": "2024-06-01T12:00:00.000Z"
-                  },
-                  "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "example": "2024-06-11T18:30:00.000Z"
                   }
                 }
               }
