@@ -45,14 +45,6 @@ requestBody:
             description: "Upload contact's photo"
             type: string
             format: binary
-          createdAt:
-            type: string
-            format: date-time
-            example: '2024-06-01T12:00:00.000Z'
-          updatedAt:
-            type: string
-            format: date-time
-            example: '2024-06-11T18:30:00.000Z'
 
 responses:
   '201':

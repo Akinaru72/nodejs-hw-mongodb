@@ -12,7 +12,10 @@ tags:
     description: Operations with contacts.
 
 servers:
+  - url: https://nodejs-hw-mongodb-7-zvjv.onrender.com
+    description: Production server
   - url: http://127.0.0.1:3000
+    description: Local development server
 
 paths:
   /contacts/{id}:
