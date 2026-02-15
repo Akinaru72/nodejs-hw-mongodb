@@ -188,4 +188,4 @@ https://github.com/user-attachments/assets/da3a1cad-f216-4c37-accd-ee7a8099d834
 
 ---
 
-**Жива сторінка: [GitHub Pages]()**
+**Жива сторінка: [GitHub Pages](https://nodejs-hw-mongodb-2-aq4q.onrender.com/)**
