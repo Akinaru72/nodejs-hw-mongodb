@@ -16,26 +16,28 @@ export const createContact = async (payload) => {
   return contact;
 };
 
+export const deleteContact = async (contactId) => {
+  const contact = await ContactsCollection.findOneAndDelete({
+    _id: contactId,
+  });
+  return contact;
+};
+
 export const updateContact = async (contactId, payload, options = {}) => {
-  const contact = await ContactsCollection.findByIdAndUpdate(
-    contactId,
+  const rawResult = await ContactsCollection.findOneAndUpdate(
+    { _id: contactId },
     payload,
     {
       new: true,
-      runValidators: true,
+      includeResultMetadata: true,
       ...options,
     },
   );
 
-  if (!contact) return null;
+  if (!rawResult || !rawResult.value) return null;
 
   return {
-    contact,
-    isNew: false,
+    contact: rawResult.value,
+    isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
-};
-
-export const deleteContact = async (contactId) => {
-  const contact = await ContactsCollection.findByIdAndDelete(contactId);
-  return contact;
 };

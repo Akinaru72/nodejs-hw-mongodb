@@ -1,10 +1,10 @@
+// src/server.js
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 
+import contactsRouter from './routers/index.js';
 import { getEnvVar } from './utils/getEnvVar.js';
-import router from './routers/index.js';
-
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
@@ -13,7 +13,7 @@ const PORT = Number(getEnvVar('PORT', '3000'));
 export const setupServer = () => {
   const app = express();
 
-  // app.use(express.json());
+  //   app.use(express.json());
   app.use(cors());
 
   app.use(
@@ -24,9 +24,10 @@ export const setupServer = () => {
     }),
   );
 
-  app.use(router);
+  app.use(contactsRouter);
 
   app.use(notFoundHandler);
+
   app.use(errorHandler);
 
   app.listen(PORT, () => {
