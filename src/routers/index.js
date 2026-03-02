@@ -6,6 +6,4 @@ const router = Router();
 
 router.use('/contacts', contactsRouter);
 
-
-
 export default router;
